@@ -12,21 +12,36 @@
             <link rel="stylesheet" href="h3ro.css" />
         </head>
         <body>
-            <!-- need to add a close button and cookies to auto close on page load -->
-            <div id="banner">
-                <a href="https://terra.hackclub.com/r/QBDD" target="_blank">
-                    <div id="infoHolder">
-                        <h1 class="terraText text"><i>Want free stuff?  <mini>(i know you do)</mini>  join me now in</i></h1>
-                        <img id="terraLogo" src="https://terra.hackclub.com/assets/loginscreen/terra-logo-with-banner-q80.webp">
-                        <img id="terraPlay" src="https://terra.hackclub.com/assets/loginscreen/play-now-q80.webp">
+            <div id="guiBar">
+                <div id="banner">
+                    <a href="https://terra.hackclub.com/r/QBDD" target="_blank" draggable="false">
+                        <div id="infoHolder">
+                            <h1 class="terraText text"><i>Want free stuff?  <mini>(i know you do)</mini>  join me now in</i></h1>
+                            <img id="terraLogo" draggable="false" src="https://terra.hackclub.com/assets/loginscreen/terra-logo-with-banner-q80.webp">
+                            <img id="terraPlay" draggable="false" src="https://terra.hackclub.com/assets/loginscreen/play-now-q80.webp">
 
+                        </div>
+                    </a>
+                </div>
+                <div id="bottomBar">
+                    <div id="GUIbottom">
+                        <div id="lightSwitch">
+                            <div id="lightIcon" class="bottomIcon"></div>
+                        </div>
+                        <div id="hideBanner">
+                            <div id="downIcon" class="bottomIcon"></div>
+                        </div>
                     </div>
-                </a>
+                </div>
             </div>
+            <img id="bgImg" src="assets/img/dark.webp">
+                <!-- need to add a close button and cookies to auto close on page load -->
+                <!-- need to light mode button and change the bg with fading animations -->
+                <!-- ezgif photopea aseprite zed linux librewolf prismlauncher vencord  -->
             <div id="container">
                 <div id="profile">
                     <div id="introduction">
-                        <img id="profilePic">
+                        <img id="profilePic" draggable="false">
                         <div id="profileTxtHolder">
                             <h1 class="text profileText" aria-label="hero" id="username">e*4?</h1>
                             <hr>
@@ -35,35 +50,70 @@
                     </div>
                     <div id="contact">
                         <hr>
-                        <h1>Contact Me</h1>
-                        <a>mailtohero@h3ro.dev</a>
-                        <h1>Elsewhere</h1>
-                        <a>github @cheese435</a>
-                        <a>slack here</a>
+                        <h1 class="text">Contact Me</h1>
+                        [handdrawn mail icon]
+                        <a class="text" href="mailto:hero at h3ro.dev">hero@h3ro.dev</a>
+                        <span class="link"></span>
+                        <h1 class="text">Elsewhere</h1>
+                        <div id="linkContainer">
+                            <div class="linkHolder">
+                                <span id="githubIcon" class="icon"></span>
+                                <a class="text" href="https://github.com/cheese435" target="_blank">cheese435</a>
+                                <span class="link"></span>
+                            </div>
+                            <div class="linkHolder">
+                                <img src="assets/img/slack.webp" class="icon dontChangeIcon">
+                                <a class="text" href="https://hackclub.enterprise.slack.com/team/U0C7R5D9CLV" target="_blank">jellyfish</a>
+                                <span class="link"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="welcome">
                     <h1 class="text" id="welcomeText">welcome to hero//root</h1>
-                    <h1 class="text" id="tank">><>~~~~~~~~~~~~~~~~~</h1>
-                    <p class="text" id="welcomeDesc">hello and welcome to <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">h3ro.dev</a>!
+                    <h1 class="text" id="tank">><>~~~~~~~~~~~~~~~~~~~~~~</h1>
+                    <p class="text" id="welcomeDesc">
+                        hello and welcome to <a class="text" target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">h3ro.dev</a>!
 
                         I will be hosting my projects and other fun things on here :)
 
                         in the meantime, check out:
-
-                        [handdrawn looking music symbol with handdrawn music text]
-                        [handdrawn looking linux symbol with handdrawn programs text]
-                        [handdrawn looking party symbol with handdrawn fun stuff text]
                     </p>
-                </div>
-                <div id="hackatime"><h1>wip</h1></div>
-                <div id="pins">
-                    <h1 id="pinTitle">Pin Board</h1>
-                    <div id="profileTxtHolder">
-                        <h1 class="text profileText" aria-label="hero" id="username">wip</h1>
-                        <hr>
-                        <h1 class="text profileText" id="pronouns">wip</h1>
+                    <div class="welcomeLinkHolder">
+                        <div class="welcomeLink">
+                            <span id="musicIcon" class="icon"></span>
+                            <a class="text iconText">music</a>
+                        </div>
+                        <span class="arrow"></span>
                     </div>
+                    <div class="welcomeLinkHolder">
+                        <div class="welcomeLink">
+                            <span id="programIcon" class="icon"></span>
+                            <a class="text iconText">programs i use</a>
+                        </div>
+                        <span class="arrow"></span>
+                    </div>
+                    <div class="welcomeLinkHolder">
+                        <div class="welcomeLink">
+                            <span id="archivesIcon" class="icon"></span>
+                            <a class="text iconText">website archives</a>
+                        </div>
+                        <span class="arrow"></span>
+                    </div>
+                    <div class="welcomeLinkHolder">
+                        <div class="welcomeLink">
+                            <span id="projectsIcon" class="icon"></span>
+                            <a class="text iconText">my projects</a>
+                        </div>
+                        <span class="arrow"></span>
+                    </div>
+                </div>
+                <div id="hackatime"><h1 class="text">wip</h1></div>
+                <div id="pins">
+                    <h1 class="text" id="pinTitle">Pin Board</h1>
+                        <h1 class="text">wip</h1>
+                        <hr>
+                        <h1 class="text">wip</h1>
                 </div>
             </div>
             <script src="h3ro.js"></script>

@@ -25,7 +25,7 @@ let direction = 0
 let pos = 1
 setInterval(() => {
   const fish = ["><>", "<><"]
-  const length = 20
+  const length = 25
   document.getElementById("tank").textContent = ("~".repeat(pos) + fish[direction] + "~".repeat(length - pos - fish[direction].length))
   if (Math.floor(Math.random() * 20) == 1) {
   	if (direction == 0) direction++; else direction--;
@@ -35,6 +35,7 @@ setInterval(() => {
   if (pos <= 0) { pos = 0; direction = 0 }
 }, 700)
 
+const banner = document.getElementById("banner")
 const fadeIn = ["pins", "welcome", "hackatime"]
 document.getElementById("profile").addEventListener('transitionend', (x) => {
   if (x.propertyName === "transform") {
@@ -44,9 +45,34 @@ document.getElementById("profile").addEventListener('transitionend', (x) => {
       element.style.opacity = 1
       element.style.transform = "translateY(0px)"
     }
-    element = document.getElementById("banner")
-    element.style.transitionDelay = "2s"
-    element.style.opacity = 1
-    element.style.transform = "translateY(0px)"
+    banner.style.transitionDelay = "2s"
+    banner.style.height = "65%"
+  }
+})
+document.getElementById("lightSwitch").addEventListener("click", () => {
+  const bgImg = document.getElementById("bgImg")
+  const lightIcon = document.getElementById("lightIcon")
+  if (document.documentElement.getAttribute("data-theme") == "light") {
+    document.documentElement.removeAttribute("data-theme");
+    bgImg.src = "assets/img/dark.webp"
+    lightIcon.style.maskImage = 'url("assets/img/lightIcon.webp")'
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+    bgImg.src = "assets/img/light.webp"
+    lightIcon.style.maskImage = 'url("assets/img/darkIcon.webp")'
+  }
+})
+let bannerOn = true
+document.getElementById("hideBanner").addEventListener("click", () => {
+  const downIcon = document.getElementById("downIcon")
+  banner.style.transitionDelay = "0s"
+  if (bannerOn == true) {
+    banner.style.height = "0%"
+    bannerOn = false
+    downIcon.transform = "rotate(180deg)"
+  } else {
+    banner.style.height = "65%"
+    bannerOn = true
+    downIcon.transform = "rotate(0deg)"
   }
 })

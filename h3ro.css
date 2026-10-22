@@ -7,27 +7,163 @@
     font-family: terraFont;
     src: url("assets/fonts/terra.ttf");
 }
+@font-face {
+    font-family: gaegu;
+    src: url("assets/fonts/gaegu.ttf");
+}
+/* uses nord colors */
+:root {
+    --bg: #2e3440;
+    --outerColor: #3b4252;
+    --innerColor: #434c5e;
+    --ligherInner: #4c566a;
+    --txtColor: #d8dee9;
+}
+[data-theme="light"] {
+    --bg: #e1e8f0;
+    --outerColor: #bcc5d4;
+    --innerColor: #c8d2e1;
+    --ligherInner: #d3dff2;
+    --txtColor: #3b4252;
+}
+#guiBar {
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    z-index: 500;
+}
+#bottomBar {
+    width: 100%;
+    height: 35%;
+}
+#bgImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.8)), to(rgba(0,0,0,0)));
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
+}
 * {
     box-sizing: border-box;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
 body {
     overflow: hidden;
+    background-color: var(--bg);
+}
+.link, #githubIcon, .arrow, .icon, .bottomIcon {
+    background-color: var(--txtColor);
+    aspect-ratio: 1/1;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    display: inline-block;
+}
+.dontChangeIcon {
+    background: none;
+}
+.welcomeLinkHolder {
+      display: flex;
+      flex-direction: column;
+      transition: transform 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.link {
+    width: 1rem;
+    -webkit-mask-image: url("assets/img/link.webp");
+    mask-image: url("assets/img/link.webp");
+}
+.arrow {
+    aspect-ratio: 8/1;
+    -webkit-mask-image: url("assets/img/arrow.webp");
+    mask-image: url("assets/img/arrow.webp");
+    image-rendering: pixelated;
+    width: 10rem;
+    right: 4%;
+    position: relative;
+}
+.welcomeLinkHolder:hover {
+    transform: translate(3%);
+}
+#githubIcon {
+    -webkit-mask-image: url("assets/img/github.webp");
+    mask-image: url("assets/img/github.webp");
+}
+#programIcon {
+    -webkit-mask-image: url("assets/img/programs.webp");
+    mask-image: url("assets/img/programs.webp");
+}
+#musicIcon {
+    -webkit-mask-image: url("assets/img/music.webp");
+    mask-image: url("assets/img/music.webp");
+}
+.iconText {
+    font-family: gaegu;
+    font-size: 2rem;
+}
+.icon {
+    position: relative;
+    transform: translate(0, 30%);
+    width: 1.5rem;
 }
 #container {
-  display: grid;
-  gap: 20px;
-  padding: 30px;
-  overflow-y: scroll;
+    display: grid;
+    gap: 20px;
+    padding: 30px;
+    overflow-y: scroll;
+    height: 90vh;
+    width: 100vw;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+#GUIbottom {
+    position: relative;
+    height: 80%;
+    width: 5%;
+    top: 10%;
+    left: 94%;
+    border-radius: 25px;
+    background: var(--outerColor);
+}
+#lightSwitch, #hideBanner {
+    background-color: var(--ligherInner);
+    position: absolute;
+    height: 80%;
+    left: 55%;
+    top: 10%;
+}
+#lightIcon {
+    mask-image: url("assets/img/lightIcon.webp");
+    width: 100%;
+}
+#hideBanner {
+    left: 8%;
+}
+#downIcon {
+    -webkit-mask-image: url("assets/img/down.webp");
+    mask-image: url("assets/img/down.webp");
+    transition: rotate 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 100%;
 }
 #container > * {
-  border: 3px solid green;
-  background-color: beige;
-  padding: 50px;
-  padding-top: 10px;
+    background-color: var(--outerColor);
+    border-radius: 15px;
+    padding: 50px;
+    padding-top: 10px;
 }
 @media (min-width: 768px) {
   #container {
       grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(6, 1fr);
   }
 }
 #pins, #welcome, #hackatime {
@@ -37,6 +173,7 @@ body {
 }
 .text {
     white-space: pre;
+    color: var(--txtColor);
 }
 #profile {
     display: grid;
@@ -49,6 +186,10 @@ body {
         opacity: 0;
         transform: translateY(40px);
     }
+}
+#pins {
+    grid-column: 3;
+    grid-row: 1;
 }
 #introduction {
     grid-column: 1;
@@ -66,14 +207,9 @@ body {
 #banner {
     background-image: url(https://terra.hackclub.com/assets/loginscreen/landing-frame-4-q80.webp);
     background-position: center 17.8%;
-    bottom: 0;
-    right: 0;
     width: 100%;
-    height: 10%;
-    position: absolute;
-    transform: translateY(200px);
-    opacity: 0;
-    transition: opacity 0s, transform 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    height: 0%;
+    transition: height 2s cubic-bezier(0.075, 0.82, 0.165, 1);
     z-index: 5;
 }
 #terraLogo {
@@ -116,11 +252,12 @@ mini {
     font-size: 2rem;
 }
 hr {
-    border-top: 8px solid #bbb;
+    border-top: 8px solid var(--innerColor);
     border-radius: 5px;
+    color: rgba(0,0,0,0);
 }
 #welcome {
-  grid-column: 5;
+  grid-column: 6;
   grid-row: 1;
 }
 #hackatime {
@@ -130,13 +267,14 @@ hr {
 #username {
     font-family: mainFont;
 }
-#profilePic {
-    height: 120px;
-    width: 120px;
+#profilePic, #lightSwitch, #hideBanner {
     aspect-ratio: 1/1;
     border-radius: 50%;
+}
+#profilePic {
+    height: 120px;
     object-fit: cover;
-    background-color: purple;
+    background-color: var(--innerColor);
 }
 #profileTxtHolder {
     width: 100%;
