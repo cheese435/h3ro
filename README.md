@@ -1,4 +1,4 @@
 # h3ro
 My personal website to host projects &amp; inform people about me!
 
-You can view the website at [h3ro.dev](https://www.h3ro.dev/)
+You can view the website at [h3ro.dev](https://h3ro.dev/)
