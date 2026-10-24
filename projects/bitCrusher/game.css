@@ -1,0 +1,504 @@
+@font-face {
+    font-family: mainFont;
+    src: url("assets/font.woff2");
+}
+.basicWindowPopup {
+    width: 10%;
+    height: auto;
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    transform-origin: center;
+    z-index: 4;
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+}
+.bombPopup {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    transform-origin: center;
+    z-index: 4;
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+}
+#window {
+    visibility: hidden;
+}
+#moneyDisplay {
+    width: 2%;
+    height: auto;
+    position: absolute;
+    left: 7%;
+    bottom: 0%;
+    transform-origin: center;
+    transform: rotate(0deg);
+    z-index: 4;
+}
+#moneyDisplayText {
+    color: mediumseagreen;
+    z-index: 4;
+    height: fit-content;
+    left: 9.5%;
+    bottom: 0.25%;
+    line-height: 0.8;
+    position: absolute;
+    transform-origin: center;
+    font-size: 1.7vw;
+    font-weight: bold;
+    overflow: visible;
+}
+.money {
+    color: mediumseagreen;
+    z-index: 4;
+    width: 5%;
+    height: 5%;
+    right: 0%;
+    bottom: 0%;
+    position: absolute;
+    transform-origin: center;
+    font-size: 200%;
+    font-weight: bold;
+    visibility: hidden;
+    overflow: hidden;
+}
+#bgImage {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    right: 0%;
+    bottom: 0%;
+    position: absolute;
+    transform-origin: center;
+}
+#taskbarImage {
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    right: 0%;
+    bottom: 0%;
+    position: absolute;
+    transform-origin: center;
+}
+.icon {
+    width: 5%;
+    height: auto;
+    position: absolute;
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+    transform-origin: center;
+    z-index: 3;
+}
+.virus {
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+    visibility: visible;
+    width: 5%;
+    height: auto;
+    position: absolute;
+    transform-origin: center;
+    z-index: 3;
+}
+#virusElement {
+    width: 5%;
+    height: auto;
+    cursor: url("assets/img/desktop/cursors/no_cursor.png"), not-allowed;
+    position: absolute;
+    visibility: hidden;
+    right: 0%;
+    bottom: 0%;
+    transform-origin: center;
+    z-index: 4;
+}
+#winOrLoseText {
+    z-index: 50;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    left: 0%;
+    top: 0%;
+    line-height: 0.8;
+    position: absolute;
+    transform-origin: center;
+    font-size: 4vw;
+    visibility: hidden;
+    font-weight: bold;
+    overflow: hidden;
+}
+#hints {
+    visibility: hidden;
+    z-index: 51;
+    height: 20%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    left: 0%;
+    bottom: 5%;
+    line-height: 0.8;
+    position: absolute;
+    transform-origin: center;
+    font-size: 2vw;
+    font-weight: bold;
+    overflow: hidden;
+}
+#restartButton {
+    z-index: 51;
+    height: 15%;
+    width: 15%;
+    left: 42%;
+    top: 70%;
+    visibility: hidden;
+    position: absolute;
+    transform-origin: center;
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+}
+body {
+    overflow: hidden;
+}
+html {
+    font-family: mainFont;
+    cursor: url("assets/img/desktop/cursors/default_cursor.png"), default;
+    -webkit-user-drag: none;
+    user-select: none;
+    overflow: hidden;
+}
+h1 {
+    pointer-events: none;
+    margin: 0%;
+}
+.windowTitle {
+    width: 82%;
+    height: 5%;
+    bottom: 99%;
+    font-size: 1.2vw;
+    left: 4%;
+    transform-origin: center;
+    overflow: hidden;
+    position: relative;
+    color: white;
+}
+#introText {
+    font-size: 1vw;
+    transform-origin: top;
+    position: absolute;
+    width: 17.5%;
+    height: auto;
+    top: 2.5%;
+    left: 7%;
+    z-index: 101;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#tempReload {
+    pointer-events: all;
+    font-size: 1.2vw;
+    transform-origin: top;
+    position: absolute;
+    width: 12%;
+    height: auto;
+    bottom: 0%;
+    right: 0%;
+    z-index: 101;
+    padding: 0.5%;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#introNextText {
+    font-size: 1vw;
+    transform-origin: top;
+    position: absolute;
+    width: 12%;
+    height: auto;
+    bottom: 3.5%;
+    left: 43%;
+    z-index: 101;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#notify {
+    font-size: 0.8vw;
+    transform-origin: top;
+    position: absolute;
+    width: 12%;
+    height: auto;
+    bottom: 3.5%;
+    left: 43%;
+    z-index: 30;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: visible;
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+}
+/* TASK MANAGER SECTION */
+#taskManager {
+    visibility: hidden;
+    position: absolute;
+    right: 1%;
+    bottom: 1%;
+    width: 25vw;
+    height: 50vh;
+    transform-origin: center;
+    z-index: 5;
+}
+#taskManagerImage {
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}
+#memoryProgess {
+    position: absolute;
+    left: 12.2%;
+    top: 51%;
+    width: 7.5%;
+    height: 26%; /*26% max*/
+    transform-origin: top;
+    transform: rotate(180deg);
+}
+/* MINI TASK MANAGER SECTION */
+#miniTaskManager {
+    visibility: hidden;
+    position: absolute;
+    right: 1%;
+    bottom: 1%;
+    width: 12.5vw;
+    height: 25vh;
+    transform-origin: center;
+    z-index: 5;
+}
+#miniTaskManagerImage {
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}
+#miniMemoryProgess {
+    position: absolute;
+    left: 16.12%;
+    top: 76%;
+    width: 9.8%;
+    height: 46%; /*46% max*/
+    transform-origin: top;
+    transform: rotate(180deg);
+}
+/* WIN DEFENDER */
+#winDefender {
+    visibility: hidden;
+    position: absolute;
+    right: 30%;
+    bottom: 35%;
+    width: 13vw;
+    height: 20vh;
+    overflow: hidden;
+    transform-origin: center;
+    z-index: 5;
+}
+#defenderWindow {
+    width: 100%;
+    height: 100%;
+}
+#timeScanning {
+    position: absolute;
+    top: 53%;
+    left: 44%;
+    font-size: 0.5vw;
+    width: 70%;
+    height: auto;
+    transform-origin: top;
+}
+#objScanned {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    font-size: 0.5vw;
+    width: 70%;
+    height: auto;
+    transform-origin: top;
+}
+/* STAT SECTION */
+#statList {
+    position: relative;
+    width: 23.5%;
+    height: 69%;
+    bottom: 84.5%;
+    left: 1%;
+    margin: 0;
+    padding: 0;
+}
+.settingsItem {
+    padding: 2%;
+    height: 20%;
+    width: 15%;
+    position: relative;
+}
+#settingsHolder {
+    position: absolute;
+    width: 75.5%;
+    height: 74.5%;
+    bottom: 4.5%;
+    left: 24%;
+    display: inline-block;
+}
+#statListTitle {
+    position: relative;
+    width: 23.5%;
+    height: 6%;
+    bottom: 84%;
+    left: 1%;
+    font-size: 1.3vw;
+}
+.statItem {
+    font-size: 0.8vw;
+}
+#statPage {
+    visibility: hidden;
+    position: absolute;
+    right: 30%;
+    bottom: 35%;
+    width: 45vw;
+    height: 65vh;
+    overflow: hidden;
+    transform-origin: center;
+    z-index: 5;
+}
+#statWindow {
+    width: 100%;
+    height: 100%;
+}
+/* SHOP SECTION */
+#shopSpan {
+    visibility: hidden;
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    width: 45vw; /* vw = viewport width — 1vw is 1% of the screen width */
+    height: 65vh; /* same for vh */
+    transform-origin: center;
+    z-index: 5;
+}
+.buttonHolder {
+    transform-origin: center;
+    pointer-events: none;
+    z-index: 5;
+    position: relative;
+    left: 1%;
+    bottom: 15%;
+    width: 100%;
+    height: 4%;
+}
+#shopWindow {
+    width: 100%;
+    height: 100%;
+}
+.closeButton {
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+    z-index: 20;
+    position: absolute;
+    right: 0.35%;
+    bottom: 94%;
+    width: 10%;
+    height: 6%;
+}
+#shopHolder {
+    position: absolute;
+    left: 24.5%;
+    top: 22%;
+    width: 74.5%;
+    height: auto;
+    grid-template-columns: repeat(
+        6,
+        minmax(10%, 1fr)
+    ); /* grid. min 10% (10 rows) with a max of whole page. */
+    display: grid;
+    column-gap: 1.5vw; /* 1.5% gap vertically */
+    row-gap: 0vw; /* 1.5% gap horizontally */
+    z-index: 5;
+}
+.shopItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+}
+.buttonPrice {
+    left: 0%;
+    top: 20%;
+    font-size: 0.8vw;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: mediumseagreen;
+    z-index: 4;
+    line-height: 0.8;
+    position: relative;
+    transform-origin: center;
+    font-weight: bold;
+    overflow: visible;
+}
+/* HOVER SECTON */
+#hoverStuffs {
+    position: absolute;
+    z-index: 9;
+    width: 10%;
+    height: 13%;
+}
+.hoverMoney {
+    width: 90%;
+    height: 15%;
+    font-size: 0.7vw;
+    left: 5%;
+    top: 4%;
+    transform-origin: center;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+}
+.hoverTitle {
+    width: 90%;
+    height: 23%;
+    font-size: 0.9vw;
+    left: 4%;
+    top: 5%;
+    transform-origin: center;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+    color: white;
+}
+.starImage {
+    width: 25%;
+    left: 71%;
+    top: 5%;
+    position: absolute;
+    height: 15%;
+    font-size: 1vw;
+    transform-origin: center;
+    font-weight: bold;
+    overflow: hidden;
+}
+.hoverText {
+    height: 58%;
+    top: 2%;
+    font-size: 0.6vw;
+    width: 95%;
+    left: 3%;
+    transform-origin: center;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+}
+.hoverElement {
+    width: 10%;
+    height: 13%;
+    position: absolute;
+    right: 20%;
+    bottom: 20%;
+    transform-origin: center;
+    z-index: 9;
+}
+#page {
+    position: relative;
+}
+/* what are you doing in here */

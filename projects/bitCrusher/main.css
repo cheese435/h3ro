@@ -1,0 +1,121 @@
+@font-face {
+    font-family: mainFont;
+    src: url("assets/font.woff2");
+}
+body {
+    overflow: hidden;
+}
+html {
+    font-family: mainFont;
+    cursor: url("assets/img/desktop/cursors/default_cursor.png"), default;
+    -webkit-user-drag: none;
+    user-select: none;
+    overflow: hidden;
+}
+h1 {
+    pointer-events: none;
+    margin: 0%;
+}
+.menuButton {
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+    position: fixed;
+    width: 15%;
+    height: auto;
+    top: 80%;
+}
+#loadBar {
+    width: 25%;
+    height: 10%;
+    right: 38%;
+    bottom: 20%;
+    position: absolute;
+    transform-origin: center;
+}
+#logo {
+    width: 35%;
+    right: 32.5%;
+    bottom: 40%;
+    position: absolute;
+    transform-origin: center;
+}
+#bgImage {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    right: 0%;
+    bottom: 0%;
+    position: absolute;
+    transform-origin: center;
+}
+#taskbarImage {
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    right: 0%;
+    bottom: 0%;
+    position: absolute;
+    transform-origin: center;
+}
+.icon {
+    width: 5%;
+    height: auto;
+    position: absolute;
+    cursor: url("assets/img/desktop/cursors/no_cursor.png"), not-allowed;
+    transform-origin: center;
+    z-index: 3;
+}
+.virus {
+    cursor: url("assets/img/desktop/cursors/no_cursor.png"), not-allowed;
+    visibility: visible;
+    width: 5%;
+    height: auto;
+    position: absolute;
+    transform-origin: center;
+    z-index: 3;
+}
+.iconText {
+    font-size: 1vw;
+    transform-origin: top;
+    position: absolute;
+    width: 30%;
+    height: auto;
+    z-index: 101;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#backArrow {
+    position: absolute;
+    width: 4%;
+    height: 10%;
+    top: 2%;
+    right: 2%;
+    z-index: 200;
+    cursor: url("assets/img/desktop/cursors/hand_cursor.png"), grab;
+}
+#moneyDisplay {
+    width: 2%;
+    height: auto;
+    position: absolute;
+    left: 7%;
+    bottom: 0%;
+    transform-origin: center;
+    transform: rotate(0deg);
+    z-index: 4;
+}
+#moneyDisplayText {
+    color: mediumseagreen;
+    z-index: 4;
+    height: fit-content;
+    left: 9.5%;
+    bottom: 0.25%;
+    line-height: 0.8;
+    position: absolute;
+    transform-origin: center;
+    font-size: 1.7vw;
+    font-weight: bold;
+    overflow: visible;
+}
+#page {
+    position: relative;
+}
+/* what are you doing in here */

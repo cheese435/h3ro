@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Bit Crusher</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="assets/img/desktop/icons/favicon.ico"
+        />
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body id="bodyContainer">
+        <a href="main.html">
+            <img
+                id="backArrow"
+                src="assets/img/menu/backArrow.png"
+                draggable="false"
+            />
+        </a>
+        <img
+            src="assets/img/desktop/bg/bliss.png"
+            id="bgImage"
+            draggable="false"
+        />
+        <img
+            src="assets/img/desktop/bg/taskbar.png"
+            id="taskbarImage"
+            draggable="false"
+        />
+        <img
+            src="assets/img/bonzi/bonziIcon.png"
+            id="bonziVirus"
+            style="bottom: 52%; right: 94%"
+            class="virus"
+            onmouseleave="hover('bonziVirus', 'exit')"
+            onmouseenter="
+                hover(
+                    'bonziVirus',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Bonzi Buddy',
+                    'Also known as Bonzi. A desktop assistant made to share jokes and facts!',
+                    'assets/img/desktop/hover/easy.png',
+                )
+            "
+            onclick="clickedVirus('bonzi')"
+            draggable="false"
+        />
+        <img
+            src="assets/img/clippy/clippyIcon.png"
+            style="bottom: 40%; right: 94%"
+            id="clippyVirus"
+            class="virus"
+            onmouseleave="hover('clippyVirus', 'exit')"
+            onmouseenter="
+                hover(
+                    'clippyVirus',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Clippy',
+                    'Also known as clippit. A desktop assistant made by Microslop!',
+                    'assets/img/desktop/hover/hard.png',
+                )
+            "
+            onclick="clickedVirus('clippy')"
+            draggable="false"
+        />
+        <h1 class="iconText" style="bottom: 45%; right: 61%">
+            These are the viruses. Clicking on them starts the game, so make
+            sure you do it when ready! They also display their difficulty and a
+            fun fact about them if when hovering.
+        </h1>
+        <img
+            src="assets/img/desktop/icons/fileExplorer.png"
+            id="fileExplorer"
+            class="icon"
+            style="bottom: 88%; right: 94%; z-index: 101"
+            onmouseleave="hover('fileExplorer', 'exit')"
+            onmouseenter="
+                hover(
+                    'fileExplorer',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'File Explorer',
+                    'Stats Menu & Settings',
+                    '',
+                )
+            "
+            draggable="false"
+            onclick="toggleVisibility('statPage')"
+        />
+        <h1 class="iconText" style="bottom: 87.5%; right: 61%">
+            This is the Stat & Settings Menu. It lets you toggle sound &
+            downloads, and also displays useful information, including how much
+            windows you can have open and what your current phase is.
+        </h1>
+        <img
+            src="assets/img/desktop/icons/taskManagerIcon.png"
+            id="taskManagerIcon"
+            style="bottom: 64%; right: 94%"
+            class="icon"
+            onmouseleave="hover('taskManagerIcon', 'exit')"
+            onmouseenter="
+                hover(
+                    'taskManagerIcon',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Task Manager',
+                    'View how much memory you have left until you fail!',
+                    '',
+                )
+            "
+            draggable="false"
+            onclick="toggleVisibility('taskManager')"
+        />
+        <h1 class="iconText" style="bottom: 64.5%; right: 61%">
+            This is the Task Manager. It displays how much memory your computer
+            is taking up. You can buy an upgrade in the shop to make it smaller!
+        </h1>
+        <img
+            src="assets/img/desktop/icons/shop.png"
+            id="shopButton"
+            style="bottom: 76%; right: 94%"
+            class="icon"
+            onmouseleave="hover('shopButton', 'exit')"
+            onmouseenter="
+                hover(
+                    'shopButton',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Microslop Store',
+                    'Buy upgrades!',
+                    '',
+                )
+            "
+            draggable="false"
+            onclick="toggleVisibility('shopSpan')"
+        />
+        <h1 class="iconText" style="bottom: 76.5%; right: 61%">
+            This is the Shop. You can buy upgrades here! Some upgrades are
+            purchaseable more than once, but most disappear after being bought.
+        </h1>
+        <img
+            src="assets/img/desktop/icons/defenderIcon.png"
+            id="winDefenderButton"
+            style="bottom: 28%; right: 94%"
+            class="icon"
+            onmouseleave="hover('winDefenderButton', 'exit')"
+            onmouseenter="
+                hover(
+                    'winDefenderButton',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Windows Defender',
+                    'Scan and remove viruses!',
+                    '',
+                )
+            "
+            draggable="false"
+            onclick="toggleVisibility('winDefender')"
+        />
+        <h1 class="iconText" style="bottom: 26.5%; right: 61%">
+            This is the Windows Defender. It becomes available in the shop after
+            reaching the 5th phase of a boss! Buying it will cause it to begin
+            searching for viruses, and if it finds one it will remove it and you
+            will win!
+        </h1>
+        <h1
+            class="iconText"
+            style="
+                bottom: 0.5%;
+                right: 58%;
+                background: none;
+                padding: 0%;
+                color: white;
+            "
+        >
+            This displays how much money you have!
+        </h1>
+        <img
+            src="assets/img/desktop/icons/money.png"
+            id="moneyDisplay"
+            draggable="false"
+        />
+        <h1 id="moneyDisplayText">$0</h1>
+    </body>
+</html>

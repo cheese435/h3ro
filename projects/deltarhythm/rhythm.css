@@ -1,0 +1,205 @@
+/* Made for Terra! (https://terra.hackclub.com/) Built in ~11hrs */
+
+body {
+    overflow: hidden;
+}
+@font-face {
+    font-family: mainFont;
+    src: url("assets/fonts/pixelSans.ttf");
+}
+html {
+    -webkit-user-drag: none;
+    user-select: none;
+    overflow: hidden;
+    background-color: black;
+    font-family: mainFont;
+}
+h1 {
+    pointer-events: none;
+    margin: 0%;
+}
+#uiHolder {
+    background-color: black;
+    width: 38%;
+    height: 100%;
+    right: 0%;
+    top: 0%;
+    position: absolute;
+    transform-origin: center;
+    z-index: 6;
+}
+.noteStopper {
+    background-color: black;
+    position: absolute;
+    transform-origin: center;
+    z-index: 5;
+}
+#gameHolder {
+    background-color: black;
+    width: 55vw;
+    height: 55vw;
+    left: 7%;
+    top: 1%;
+    position: absolute;
+    transform-origin: center;
+}
+#battleBoxDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    top: 0%;
+    position: absolute;
+    left: 25%;
+}
+#battleBox {
+    z-index: 1;
+    width: 30vw;
+    height: 30vw;
+    background-color: black;
+    transform-origin: center;
+}
+#soul {
+    z-index: 2;
+    width: 3vw;
+    height: auto;
+    position: absolute;
+    transform-origin: center;
+}
+#soulHolder {
+    z-index: 1;
+    width: 30vw;
+    height: 30vw;
+    position: absolute;
+    transform-origin: center;
+}
+.bg {
+    z-index: 0;
+    width: 30vw;
+    height: 30vw;
+    position: absolute;
+    transform-origin: center;
+}
+.lane {
+    position: relative;
+    transform-origin: center;
+    z-index: 5;
+}
+#verticalLane {
+    width: 30vw;
+    bottom: 53%;
+    height: 100%;
+    left: 25%;
+    /*background-color: rgba(0, 255, 255, 0.2);*/
+}
+#horizontalLane {
+    top: 23.5%;
+    width: 100%;
+    height: 52vh;
+    /*background-color: rgba(255, 0, 255, 0.2);*/
+}
+.note {
+    position: absolute;
+    transform-origin: center;
+    z-index: 1;
+}
+.noteHolder {
+    width: 8vw;
+    height: 8vw;
+    /*/*background-color: red;*/
+    position: absolute;
+    transform-origin: center;
+}
+#fileInput {
+    left: 1%;
+    bottom: 1%;
+    position: absolute;
+    transform-origin: center;
+}
+.cover {
+    z-index: 1;
+    position: relative;
+    width: 70%;
+    height: 99.5%;
+    left: 55%;
+    bottom: 98.5%;
+}
+.sngName {
+    position: relative;
+    color: white;
+    z-index: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 54%;
+    height: 32%;
+    bottom: 168%;
+    left: 5%;
+    font-size: 1.22vw;
+    padding: 0.5%;
+}
+.starValue {
+    position: relative;
+    color: white;
+    z-index: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0.5%;
+    width: 12%;
+    height: 31%;
+    bottom: 203%;
+    left: -12.5%;
+    font-size: 2.5vw;
+    text-align: center;
+}
+.songButton {
+    width: 38vw;
+    right: 41%;
+    z-index: 2;
+    position: relative;
+    top:3%;
+}
+.songHolder {
+    width: 60%;
+    height: 17%;
+    left: 25%;
+    position: relative;
+}
+.keys {
+    width: 10%;
+    height: auto;
+    position: absolute;
+}
+.text {
+    position: relative;
+    color: white;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+}
+.noteAccuracy {
+    width: 4vw;
+    height: 4vw;
+    z-index: 2;
+    top: 25%;
+    left: 25%;
+    position: absolute;
+    transform-origin: center;
+}
+#settings {
+    width: 20%;
+    left: 0%;
+    bottom: 0%;
+    background-color: black;
+    height: 34%;
+    position: absolute;
+    transform-origin: center;
+    z-index: 7;
+}
+.settingsItem {
+    width: 100%;
+    left: 0%;
+    height: 10%;
+    top: 0%;
+    position: relative;
+    transform-origin: center;
+}

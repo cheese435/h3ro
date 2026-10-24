@@ -1,25 +1,121 @@
     <!doctype html>
     <!-- Made for Terra! (https://terra.hackclub.com/) -->
-    <html>
+    <html lang="en">
         <head>
             <title>h3ro</title>
-            <!-- <link
+            <link
                 rel="icon"
                 type="image/x-icon"
                 href="assets/img/favicon.ico"
-                /> -->
+                />
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="h3ro.css" />
         </head>
         <body>
+            <div id="popup">
+                <div id="exitHolder">
+                    <span id="exitIcon"></span>
+                </div>
+                <div id="popupHolder">
+                    <h1 class="text" id="popupTitle">Title</h1>
+                    <hr id="titleHr">
+                    <div id="archives">
+                        <a href="https://zombo.h3ro.dev/" target="_blank" class="archiveHolder">
+                            <h1 class="text archiveText">zombo.com</h1>
+                            <span class="arrow archiveArrow"></span>
+                        </a>
+                        <a href="https://chungus.h3ro.dev/" target="_blank" class="archiveHolder">
+                            <h1 class="text archiveText">bigchungus.org</h1>
+                            <span class="arrow archiveArrow"></span>
+                        </a>
+                    </div>
+                    <div id="projects">
+                        <a href="projects/bitCrusher/main.html" target="_blank" class="archiveHolder">
+                            <div class="archiveImage">
+                                <img class="icon dontChangeIcon projectIcon" src="projects/bitCrusher/assets/img/desktop/icons/favicon.ico">
+                                <h1 class="text archiveText">bitcrusher</h1>
+                            </div>
+                            <span class="arrow archiveArrow"></span>
+                        </a>
+                        <a href="projects/deltarhythm/rhythm.html" target="_blank" class="archiveHolder">
+                            <div class="archiveImage">
+                                <img class="icon dontChangeIcon projectIcon" src="projects/deltarhythm/assets/img/favicon.ico">
+                                <h1 class="text archiveText">deltarhythm</h1>
+                            </div>
+                            <span class="arrow archiveArrow"></span>
+                        </a>
+                        <a href="projects/trashy/trashy.html" target="_blank" class="archiveHolder">
+                            <div class="archiveImage">
+                                <img class="icon dontChangeIcon projectIcon" src="projects/trashy/assets/img/favicon.ico">
+                                <h1 class="text archiveText">trashy</h1>
+                            </div>
+                            <span class="arrow archiveArrow"></span>
+                        </a>
+                    </div>
+                    <div id="programs">
+                        <h1 class="programTitle">things i use for coding :D</h1>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">zed</h1>
+                        </div>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">aseprite</h1>
+                        </div>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">photopea</h1>
+                        </div>
+                        <h1 class="programTitle">operating system (arch btw)</h1>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">linux</h1>
+                        </div>
+                        <h1 class="programTitle">tools</h1>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">convertToIt</h1>
+                        </div>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">ezGif</h1>
+                        </div>
+                        <h1 class="programTitle">day-to-day use programs</h1>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">tauon</h1>
+                        </div>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">librewolf</h1>
+                        </div>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">prismlauncher</h1>
+                        </div>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">vencord</h1>
+                        </div>
+                        <h1 class="programTitle">self-hosted</h1>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">navidrome</h1>
+                        </div>
+                        <div class="archiveHolder programHolder">
+                            <span class="icon dontChangeIcon projectIcon"></span>
+                            <h1 class="text archiveText">nginx</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="guiBar">
                 <div id="banner">
                     <a href="https://terra.hackclub.com/r/QBDD" target="_blank" draggable="false">
                         <div id="infoHolder">
-                            <h1 class="terraText text"><i>Want free stuff?  <mini>(i know you do)</mini>  join me now in</i></h1>
+                            <h1 class="terraText text"><i>Want free stuff?  <mini>(i know you do)</mini>  join me now in terra!</i></h1>
                             <img id="terraLogo" draggable="false" src="https://terra.hackclub.com/assets/loginscreen/terra-logo-with-banner-q80.webp">
                             <img id="terraPlay" draggable="false" src="https://terra.hackclub.com/assets/loginscreen/play-now-q80.webp">
-
                         </div>
                     </a>
                 </div>
@@ -35,13 +131,10 @@
                 </div>
             </div>
             <img id="bgImg" src="assets/img/dark.webp">
-                <!-- need to add a close button and cookies to auto close on page load -->
-                <!-- need to light mode button and change the bg with fading animations -->
-                <!-- ezgif photopea aseprite zed linux librewolf prismlauncher vencord  -->
             <div id="container">
                 <div id="profile">
                     <div id="introduction">
-                        <img id="profilePic" draggable="false">
+                        <img id="profilePic" src="assets/img/profile.webp" draggable="false">
                         <div id="profileTxtHolder">
                             <h1 class="text profileText" aria-label="hero" id="username">e*4?</h1>
                             <hr>
@@ -73,34 +166,25 @@
                     <h1 class="text" id="welcomeText">welcome to hero//root</h1>
                     <h1 class="text" id="tank">><>~~~~~~~~~~~~~~~~~~~~~~</h1>
                     <p class="text" id="welcomeDesc">
-                        hello and welcome to <a class="text" target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">h3ro.dev</a>!
-
-                        I will be hosting my projects and other fun things on here :)
-
-                        in the meantime, check out:
+                    hello and welcome to <a class="text yesUnderline" target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">h3ro.dev</a>!
+                    I will be hosting my projects and other fun things on here :)
+                    in the meantime, check out:
                     </p>
-                    <div class="welcomeLinkHolder">
-                        <div class="welcomeLink">
-                            <span id="musicIcon" class="icon"></span>
-                            <a class="text iconText">music</a>
-                        </div>
-                        <span class="arrow"></span>
-                    </div>
-                    <div class="welcomeLinkHolder">
+                    <div class="welcomeLinkHolder" onclick="showPopup('programs')">
                         <div class="welcomeLink">
                             <span id="programIcon" class="icon"></span>
                             <a class="text iconText">programs i use</a>
                         </div>
                         <span class="arrow"></span>
                     </div>
-                    <div class="welcomeLinkHolder">
+                    <div class="welcomeLinkHolder" onclick="showPopup('archives')">
                         <div class="welcomeLink">
                             <span id="archivesIcon" class="icon"></span>
                             <a class="text iconText">website archives</a>
                         </div>
                         <span class="arrow"></span>
                     </div>
-                    <div class="welcomeLinkHolder">
+                    <div class="welcomeLinkHolder" onclick="showPopup('projects')">
                         <div class="welcomeLink">
                             <span id="projectsIcon" class="icon"></span>
                             <a class="text iconText">my projects</a>
@@ -108,14 +192,38 @@
                         <span class="arrow"></span>
                     </div>
                 </div>
-                <div id="hackatime"><h1 class="text">wip</h1></div>
+                <div id="hackatime">
+                    <h1 class="text">Hackatime Data</h1>
+                    <div id="hackatimeHolder">
+                        <div class="hackatimeData">
+                            <h1 class="text hackatimeTitle">Total Time Coded</h1>
+                            <h1 class="text hackatimeInfo" id="totalTime">Loading...</h1>
+                        </div>
+                        <div class="hackatimeData">
+                            <h1 class="text hackatimeTitle">Coding Time Today</h1>
+                            <h1 class="text hackatimeInfo" id="timeToday">Loading...</h1>
+                        </div>
+                        <div class="hackatimeData">
+                            <h1 class="text hackatimeTitle">Time Coded (h3ro.dev)</h1>
+                            <h1 class="text hackatimeInfo" id="websiteTime">Loading...</h1>
+                        </div>
+                        <div class="hackatimeData">
+                            <h1 class="text hackatimeTitle">Total Days Coded</h1>
+                            <h1 class="text hackatimeInfo" id="daysCoded">Loading...</h1>
+                        </div>
+                        <div class="hackatimeData">
+                            <h1 class="text hackatimeTitle">Streak</h1>
+                            <h1 class="text hackatimeInfo" id="streak">Loading...</h1>
+                        </div>
+                    </div>
+                </div>
                 <div id="pins">
                     <h1 class="text" id="pinTitle">Pin Board</h1>
-                        <h1 class="text">wip</h1>
+                        <h1 class="text" id="pinText">nothing to show here :(</h1>
                         <hr>
-                        <h1 class="text">wip</h1>
+                        <h1 class="text"></h1>
                 </div>
             </div>
-            <script src="h3ro.js"></script>
+            <script src="h3ro.js" defer></script>
         </body>
     </html>

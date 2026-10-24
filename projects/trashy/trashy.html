@@ -1,0 +1,103 @@
+    <!doctype html>
+    <!-- Made for Terra! (https://terra.hackclub.com/) -->
+    <html>
+        <head>
+            <title>trashy!</title>
+            <link
+                rel="icon"
+                type="image/x-icon"
+                href="assets/img/favicon.ico"
+                />
+            <link rel="stylesheet" href="trashy.css" />
+        </head>
+        <body id="bodyContainer">
+            <!-- TEMPLATES -->
+            <div class="flexCenter trash" id="templateTrash" onclick="moveTrash(this)" draggable="false" style="visibility: hidden;">
+                <img class="trashImg" draggable="false">
+                <img class="glow" draggable="false" src="assets/img/glow.png" style="visibility: hidden;">
+            </div>
+            <div class="shopItem" id="shopTemplate" style="visibility: hidden;">
+                <img class="shopImg" draggable="false">
+                <h1 class="shopText" id="title" draggable="false" style="width: 60%;right: 3%;"></h1>
+                <h1 class="soldSticker" draggable="false" style="visibility: hidden;">SOLD OUT</h1>
+                <h1 class="shopText" id="desc" style="height: 49%; top: 43%; font-size: 0.6vw;" draggable="false"></h1>
+                <h1 class="shopText" id="price" style="height: 50%; top: 44%; font-size: 1.3vw;right: 2%;width: 17%;background: none;" draggable="false"></h1>
+            </div>
+            <div class="hover" id="hoverTemplate" style="visibility: hidden;">
+                <h1 class="hoverText" id="title" draggable="false" style="width: 60%;right: 3%; font-size: 1vw;"></h1>
+                <h1 class="hoverText" id="desc" style="height: 49%; top: 41%; font-size: 0.8vw;" draggable="false"></h1>
+                <h1 class="hoverText" id="price" draggable="false" style="width: 27%; left: 3%; height: 82%; font-size: 2.5vw;"></h1>
+                <h1 class="hoverText" id="amountLeft" style="top: 41%; font-size: 1.4vw; height: 50%; right: 2%; width: 17%; background: none;" draggable="false"></h1>
+            </div>
+            <div id="collectionTemplate" class="collectionItem" style="visibility: hidden;">
+                <img class="collectionImg" draggable="false" style="visibility: hidden;">
+                <h1 class="collectionLocked" draggable="false">?</h1>
+            </div>
+            <!-- VISIBLE HTML -->
+            <div id="trashContainer">
+                <div id="binHolder" class="flexCenter">
+                    <div id="bin" style="width: 15%; height: 25%;">
+                        <img draggable="false" src="assets/img/bin.png" style="width: 100%; height: 100%;">
+                    </div>
+                </div>
+            </div>
+            <div id="shine" class="flexCenter" draggable="false">
+                <div id="shineImgDiv">
+                    <img id="shineImg" draggable="false" src="assets/img/shine.png">
+                    <img id="KKImg" draggable="false">
+                    <h1 id="KKText" class="text" draggable="false" style="font-size: 3vw;">staple</h1>
+                    <h1 id="KKdescription" class="text" draggable="false" style="top: 47%; height: 15%;">ee</h1>
+                </div>
+            </div>
+            <div id="topBar" draggable="false">
+                <h1 class="shopText" id="currency" draggable="false">$0</h1>
+                <div id="logBookButton" onclick="const x = document.getElementById('bgDim'); const y = document.getElementById('collection'); const z = document.getElementById('closeButton'); if (y.style.opacity == 0 || y.style.opacity === '') { y.style.pointerEvents = 'auto'; z.style.pointerEvents = 'auto'; y.style.opacity = 1; x.style.opacity = 1; } else { y.style.pointerEvents = 'none'; z.style.pointerEvents = 'none'; y.style.opacity = 0; x.style.opacity = 0; }">
+                    <div class="logBook" style="background: rgb(209, 151, 107);">
+                        <div class="logBook" id="displayBook" style="width: 100%; height: 100%; z-index: 10; left: -20%; top: -3%;"></div>
+                        <div class="logBookBar"></div>
+                        <div class="logBookBar" id="displayTitle" style="z-index: 10; top: 13%; width: 75%;"></div>
+                        <div class="logBookBar" style="top: 41%;"></div>
+                        <div class="paper" id="displayPaper1" style="top: 1%; left: 3%; border-radius: 10px; border-width: 0.15vw;"></div>
+                        <div class="paper" id="displayPaper2" style="z-index: 1; background-color: rgb(249, 230, 206); top: 2%; left: 11%; border-width: 0.15vw; border-radius: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- SHOP -->
+            <div id="shopContainer" class="flexCenter">
+                <div id="bottomBar" draggable="false">
+                    <h1 id="settingsTitle">Settings & Info</h1>
+                    <div id="settingsButton" class="flexCenter" onclick="moveSettings(this)">
+                        <h1 style="font-size: 2vw;">+</h1>
+                    </div>
+                    <h1 class="settingsItem" id="sComplete">0% Collected</h1>
+                    <h1 class="settingsItem" id="sTotal">$0 Total</h1>
+                    <h1 class="settingsItem" id="sSpent">$0 Spent</h1>
+                    <h1 class="settingsItem" id="sClicked">0 Trash Clicks</h1>
+                    <h1 class="settingsItem" id="sKK">0 Knickknacks</h1>
+                    <div id="volumeControls">
+                        <div class="volumeButton flexCenter" style="right: 1%;" onclick="settings('volumeDown')">
+                            <h1 style="font-size: 2vw;">-</h1>
+                        </div>
+                        <h1 id="volumeTxt">Volume [100]</h1>
+                        <div class="volumeButton flexCenter" onclick="settings('volumeUp')">
+                            <h1 style="font-size: 2vw;">+</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- COLLECTION -->
+            <div id="bgDim" style="opacity: 0;"></div>
+            <div id="collection" style="opacity: 0;">
+                <div id="titleBar">
+                    <div id="closeButton" onclick="document.getElementById('collection').style.opacity = 0; document.getElementById('collection').style.pointerEvents = 'none'; document.getElementById('closeButton').style.pointerEvents = 'none'; document.getElementById('bgDim').style.opacity = 0">
+                        <h1 id="closeButtonText">x</h1>
+                    </div>
+                    <h1 id="collectionTitle">Knickknack Collection</h1>
+                </div>
+                <div class="paper" id="collectionHolder">
+                </div>
+                <div class="paper" style="transform: rotate(4deg); z-index: 1; background-color: rgb(249, 230, 206);"></div>
+            </div>
+            <script src="trashy.js"></script>
+        </body>
+    </html>

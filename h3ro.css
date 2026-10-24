@@ -1,16 +1,29 @@
+/*  * { outline: 3px solid red; }  */
+
 /* Made for Terra! (https://terra.hackclub.com/) */
+
+
 @font-face {
     font-family: mainFont;
+    src: url("assets/fonts/montserrat.ttf")
+}
+@font-face {
+    font-family: customMonospace;
     src: url("assets/fonts/monoSpace.ttf");
 }
+
 @font-face {
     font-family: terraFont;
     src: url("assets/fonts/terra.ttf");
 }
+
 @font-face {
     font-family: gaegu;
     src: url("assets/fonts/gaegu.ttf");
 }
+
+
+
 /* uses nord colors */
 :root {
     --bg: #2e3440;
@@ -19,6 +32,7 @@
     --ligherInner: #4c566a;
     --txtColor: #d8dee9;
 }
+
 [data-theme="light"] {
     --bg: #e1e8f0;
     --outerColor: #bcc5d4;
@@ -26,38 +40,45 @@
     --ligherInner: #d3dff2;
     --txtColor: #3b4252;
 }
-#guiBar {
-    display: flex;
-    flex-direction: column-reverse;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 15%;
-    z-index: 500;
-}
-#bottomBar {
-    width: 100%;
-    height: 35%;
-}
-#bgImg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.8)), to(rgba(0,0,0,0)));
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
-}
+
+
+
 * {
     box-sizing: border-box;
     transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
+
 body {
-    overflow: hidden;
     background-color: var(--bg);
+    font-family: mainFont;
 }
-.link, #githubIcon, .arrow, .icon, .bottomIcon {
+
+a {
+    text-decoration: none;
+}
+
+.yesUnderline {
+    text-decoration: underline;
+}
+
+hr {
+    border-top: 8px solid var(--innerColor);
+    border-radius: 5px;
+    color: rgba(0,0,0,0);
+}
+
+mini {
+    font-size: 2rem;
+}
+
+.text {
+    white-space: pre-wrap;
+    color: var(--txtColor);
+}
+
+
+
+.link, #githubIcon, .arrow, .icon, .bottomIcon, #exitIcon {
     background-color: var(--txtColor);
     aspect-ratio: 1/1;
     -webkit-mask-repeat: no-repeat;
@@ -68,19 +89,17 @@ body {
     mask-size: contain;
     display: inline-block;
 }
+
 .dontChangeIcon {
     background: none;
 }
-.welcomeLinkHolder {
-      display: flex;
-      flex-direction: column;
-      transition: transform 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
+
 .link {
     width: 1rem;
     -webkit-mask-image: url("assets/img/link.webp");
     mask-image: url("assets/img/link.webp");
 }
+
 .arrow {
     aspect-ratio: 8/1;
     -webkit-mask-image: url("assets/img/arrow.webp");
@@ -90,107 +109,122 @@ body {
     right: 4%;
     position: relative;
 }
-.welcomeLinkHolder:hover {
-    transform: translate(3%);
+
+.archiveArrow {
+    right: 1.5%;
 }
-#githubIcon {
-    -webkit-mask-image: url("assets/img/github.webp");
-    mask-image: url("assets/img/github.webp");
-}
-#programIcon {
-    -webkit-mask-image: url("assets/img/programs.webp");
-    mask-image: url("assets/img/programs.webp");
-}
-#musicIcon {
-    -webkit-mask-image: url("assets/img/music.webp");
-    mask-image: url("assets/img/music.webp");
-}
-.iconText {
-    font-family: gaegu;
-    font-size: 2rem;
-}
+
 .icon {
     position: relative;
     transform: translate(0, 30%);
     width: 1.5rem;
 }
+
+.projectIcon {
+    height: 3rem;
+    width: 3rem;
+}
+
+#githubIcon {
+    -webkit-mask-image: url("assets/img/github.webp");
+    mask-image: url("assets/img/github.webp");
+}
+
+#programIcon {
+    -webkit-mask-image: url("assets/img/programs.webp");
+    mask-image: url("assets/img/programs.webp");
+}
+
+#musicIcon {
+    -webkit-mask-image: url("assets/img/music.webp");
+    mask-image: url("assets/img/music.webp");
+}
+
+
+
+.welcomeLinkHolder, .archiveHolder {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.programHolder {
+    flex-direction: row;
+}
+
+.archiveImage {
+    display: flex;
+    flex-direction: row;
+}
+
+.welcomeLinkHolder:hover {
+    transform: translate(3%);
+}
+
+.archiveHolder:hover {
+    transform: translate(3%);
+}
+
+.iconText, .archiveText {
+    font-family: gaegu;
+    font-size: 2rem;
+}
+
+
+
+#bgImg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.8)), to(rgba(0,0,0,0)));
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    object-fit: cover;
+    object-position: center;
+}
+
 #container {
     display: grid;
     gap: 20px;
-    padding: 30px;
-    overflow-y: scroll;
-    height: 90vh;
-    width: 100vw;
+    padding: 30px 30px 8rem;
+    min-height: 100dvh;
+    width: 100%;
     left: 0;
     position: absolute;
     top: 0;
+    grid-template-columns: 1fr;
+    grid-template-areas: "profile" "pins" "welcome" "hackatime";
 }
-#GUIbottom {
-    position: relative;
-    height: 80%;
-    width: 5%;
-    top: 10%;
-    left: 94%;
-    border-radius: 25px;
-    background: var(--outerColor);
-}
-#lightSwitch, #hideBanner {
-    background-color: var(--ligherInner);
-    position: absolute;
-    height: 80%;
-    left: 55%;
-    top: 10%;
-}
-#lightIcon {
-    mask-image: url("assets/img/lightIcon.webp");
-    width: 100%;
-}
-#hideBanner {
-    left: 8%;
-}
-#downIcon {
-    -webkit-mask-image: url("assets/img/down.webp");
-    mask-image: url("assets/img/down.webp");
-    transition: rotate 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-    width: 100%;
-}
+
 #container > * {
     background-color: var(--outerColor);
     border-radius: 15px;
-    padding: 50px;
+    padding: clamp(1rem, 3vw, 3rem);
     padding-top: 10px;
 }
-@media (min-width: 768px) {
-  #container {
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(6, 1fr);
-  }
-}
+
 #pins, #welcome, #hackatime {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.5s, transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-.text {
-    white-space: pre;
-    color: var(--txtColor);
-}
+
+
+
 #profile {
+    grid-area: profile;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-column: 1 / span 2;
-    grid-row: 1;
     transition: opacity 0.5s, transform 2s cubic-bezier(0.075, 0.82, 0.165, 1);
     @starting-style {
         opacity: 0;
         transform: translateY(40px);
     }
 }
-#pins {
-    grid-column: 3;
-    grid-row: 1;
-}
+
 #introduction {
     grid-column: 1;
     grid-row: 1;
@@ -200,85 +234,27 @@ body {
     text-align: center;
     gap: 35px;
 }
-#contact {
-    grid-column: 1;
-    grid-row: 2;
-}
-#banner {
-    background-image: url(https://terra.hackclub.com/assets/loginscreen/landing-frame-4-q80.webp);
-    background-position: center 17.8%;
-    width: 100%;
-    height: 0%;
-    transition: height 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-    z-index: 5;
-}
-#terraLogo {
-    position: relative;
-    aspect-ratio: 2/1;
-    width: 11%;
-    left: 1%;
-    padding: 0.4%;
-}
-#terraPlay {
-    position: relative;
-    aspect-ratio: 3/1;
-    padding: 0.4%;
-    width: 12%;
-    left: 5%;
-    top: 5%;
-}
-.terraText {
-    color: #93582c;
-    font-size: 3.5rem;
-    font-family: terraFont;
-    position: relative;
-    bottom: 11%;
-    height: 86%;
-    width: 51%;
-    left: 5%;
-}
-@supports (-webkit-text-stroke: 0) {
-  .terraText {
-    -webkit-text-stroke: 15px #f7d8b2;
-    paint-order: stroke fill;
-  }
-}
-#infoHolder {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-mini {
-    font-size: 2rem;
-}
-hr {
-    border-top: 8px solid var(--innerColor);
-    border-radius: 5px;
-    color: rgba(0,0,0,0);
-}
-#welcome {
-  grid-column: 6;
-  grid-row: 1;
-}
-#hackatime {
-  grid-column: 3;
-  grid-row: 2;
-}
-#username {
-    font-family: mainFont;
-}
+
 #profilePic, #lightSwitch, #hideBanner {
     aspect-ratio: 1/1;
     border-radius: 50%;
 }
+
 #profilePic {
     height: 120px;
     object-fit: cover;
     background-color: var(--innerColor);
 }
+
 #profileTxtHolder {
     width: 100%;
 }
+
+#username {
+    font-family: customMonospace;
+    white-space: pre;
+}
+
 .profileText {
     width: 100%;
     height: 10%;
@@ -286,4 +262,249 @@ hr {
     margin: 0;
     text-align: start;
     font-size: 2rem;
+}
+
+#contact {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#welcome {
+    grid-area: welcome;
+}
+
+#hackatime {
+    grid-area: hackatime;
+}
+
+#hackatimeHolder {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5%;
+}
+
+.hackatimeData {
+    background: var(--innerColor);
+    border-radius: 15px;
+    aspect-ratio: auto;
+    min-height: 5rem;
+    padding: 0.5rem;
+}
+
+.hackatimeInfo {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.hackatimeInfo, .hackatimeTitle {
+    text-align: center;
+    font-family: customMonospace;
+    font-size: inherit;
+}
+
+
+
+#pins {
+    grid-area: pins;
+}
+
+#pinText {
+    font-size: 1.5rem;
+}
+
+
+#banner.open {
+    height: clamp(3rem, 7rem, 7rem);
+}
+#banner {
+    height: 0;
+    overflow: hidden;
+    background-image: url(https://terra.hackclub.com/assets/loginscreen/landing-frame-4-q80.webp);
+    background-position: center 17.8%;
+    background-size: cover;
+    width: 100%;
+    transition: height 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 5;
+}
+
+#infoHolder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+#terraLogo, #terraPlay {
+    object-fit: contain;
+    max-height: 100%;
+}
+#terraLogo {
+    position: relative;
+    height: auto;
+    width: 11%;
+    left: 3%;
+    padding: 0.4%;
+}
+
+#terraPlay {
+    position: relative;
+    padding: 0.4%;
+    width: 15%;
+    height: auto;
+    left: 5%;
+    top: 5%;
+}
+
+.terraText {
+    color: #93582c;
+    font-size: clamp(1.25rem, 3.5vw, 3.5rem);
+    font-family: terraFont;
+    padding-left: 2rem;
+}
+
+@supports (-webkit-text-stroke: 0) {
+  .terraText {
+      -webkit-text-stroke: clamp(3px, 1vw, 15px) #f7d8b2;
+      paint-order: stroke fill;
+  }
+}
+
+
+
+#guiBar {
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 500;
+}
+
+#bottomBar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    width: 100%;
+    height: 3.5rem;
+}
+
+#GUIbottom {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.25rem;
+    border-radius: 25px;
+    background: var(--outerColor);
+}
+
+#lightSwitch, #hideBanner {
+    background-color: var(--ligherInner);
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+}
+
+#lightIcon {
+    mask-image: url("assets/img/lightIcon.webp");
+    width: 100%;
+}
+
+#downIcon {
+    -webkit-mask-image: url("assets/img/down.webp");
+    mask-image: url("assets/img/down.webp");
+    transition: rotate 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 100%;
+}
+
+.bottomIcon {
+    cursor: pointer;
+}
+
+
+
+#popup {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 501;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    transition: opacity 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+#exitHolder {
+    top: 1.5rem;
+    right: 0.75rem;
+    width: clamp(2.75rem, 9vw, 7.5rem);
+    position: absolute;
+    border: solid var(--outerColor);
+    border-width: clamp(3px, 0.6vw, 8px);
+    aspect-ratio: 1/1;
+    background-color: var(--innerColor);
+    z-index: 2;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#exitIcon {
+    width: 100%;
+    -webkit-mask-image: url("assets/img/x.webp");
+    mask-image: url("assets/img/x.webp");
+}
+
+#popupHolder {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    bottom: 5%;
+    left: 5%;
+    background-color: var(--bg);
+}
+
+#popupTitle {
+    font-family: gaegu;
+    font-size: 3rem;
+    text-align: center;
+}
+
+#titleHr {
+    width: 15%;
+}
+
+#archives, #projects, #programs {
+    width: 90%;
+    height: 82.5%;
+    bottom: 0;
+    left: 5%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.programTitle {
+    font-family: customMonospace;
+    color: var(--txtColor);
+}
+
+@media (min-width: 668px) {
+  #container {
+    grid-template-columns: 1fr 1fr 1.5fr 1fr;
+    grid-template-areas:
+        "profile pins x welcome"
+        "hackatime hackatime y z";
+  }
+  #hackatimeHolder {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 667px) {
+    #terraPlay, #terraLogo {
+        display: none;
+    }
 }

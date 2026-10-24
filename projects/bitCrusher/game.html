@@ -1,0 +1,768 @@
+<!-- i see you -->
+<!doctype html>
+<html>
+    <head>
+        <title>Bit Crusher</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="assets/img/desktop/icons/favicon.ico"
+        />
+        <link rel="stylesheet" href="game.css" />
+    </head>
+    <body id="bodyContainer">
+        <div
+            id="introOverlay"
+            style="
+                position: fixed;
+                inset: 0;
+                /* inset is short for top: 0; right: 0; bottom: 0; left: 0 */
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+            "
+            onclick="intro()"
+        ></div>
+        <h1 id="introText">
+            This is the stat menu. You can also change settings here!
+        </h1>
+        <h1 id="introNextText">(click anywhere to continue)</h1>
+        <a href="game.html">
+            <h1 id="tempReload">(click here to restart game!)</h1>
+        </a>
+        <h1
+            id="notify"
+            style="visibility: hidden"
+            onclick="this.style.visibility = 'hidden'"
+        ></h1>
+        <img
+            src="assets/img/desktop/bg/bliss.png"
+            id="bgImage"
+            draggable="false"
+        />
+        <img
+            src="assets/img/desktop/bg/taskbar.png"
+            id="taskbarImage"
+            draggable="false"
+        />
+        <img
+            src="assets/img/desktop/popups/bomb.png"
+            class="bombPopup"
+            id="bombWindow"
+            style="visibility: hidden; width: 5%; height: auto"
+            onclick="stopAnimations('lose')"
+        />
+        <a href="game.html" id="restartButton" draggable="false"
+            ><img
+                draggable="false"
+                style="width: 100%"
+                id="restartButtonImg"
+                src="assets/img/desktop/buttons/loseButton.png"
+        /></a>
+        <h1 id="winOrLoseText"></h1>
+        <h1 id="hints"></h1>
+        <img
+            src="assets/img/desktop/icons/money.png"
+            id="moneyDisplay"
+            draggable="false"
+        />
+        <h1 id="moneyDisplayText">$0</h1>
+        <h1 class="money" id="mainMoney"></h1>
+        <img
+            src="assets/img/desktop/popups/5.png"
+            id="window"
+            class="basicWindowPopup"
+            draggable="false"
+        />
+        <span id="hoverElementSpanShop" style="visibility: hidden">
+            <img
+                src="assets/img/desktop/popups/hoverWindow.png"
+                id="hoverElementShop"
+                class="hoverElement"
+                draggable="false"
+            />
+            <span id="hoverStuffs">
+                <h1 class="hoverTitle"></h1>
+                <h1 class="hoverText"></h1>
+                <h1 class="hoverMoney"></h1>
+            </span>
+        </span>
+        <span id="hoverElementSpan" style="visibility: hidden">
+            <img
+                src="assets/img/desktop/popups/hoverWindow.png"
+                id="hoverElement"
+                class="hoverElement"
+                draggable="false"
+            />
+            <span id="hoverStuffs">
+                <h1 class="hoverTitle"></h1>
+                <img
+                    class="starImage"
+                    src="assets/img/desktop/hover/easy.png"
+                />
+                <h1 class="hoverText"></h1>
+            </span>
+        </span>
+        <!-- desktop icons -->
+        <img
+            src="assets/img/bonzi/bonziIcon.png"
+            id="bonziVirus"
+            style="bottom: 52%; right: 94%"
+            class="virus"
+            onmouseleave="hover('bonziVirus', 'exit')"
+            onmouseenter="
+                hover(
+                    'bonziVirus',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Bonzi Buddy',
+                    'Also known as Bonzi. A desktop assistant made to share jokes and facts!',
+                    'assets/img/desktop/hover/easy.png',
+                )
+            "
+            onclick="clickedVirus('bonzi')"
+            draggable="false"
+        />
+        <img
+            src="assets/img/clippy/clippyIcon.png"
+            style="bottom: 40%; right: 94%"
+            id="clippyVirus"
+            class="virus"
+            onmouseleave="hover('clippyVirus', 'exit')"
+            onmouseenter="
+                hover(
+                    'clippyVirus',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Clippy',
+                    'Also known as clippit. A desktop assistant made by Microslop!',
+                    'assets/img/desktop/hover/hard.png',
+                )
+            "
+            onclick="clickedVirus('clippy')"
+            draggable="false"
+        />
+        <img
+            src="assets/img/desktop/icons/fileExplorer.png"
+            id="fileExplorer"
+            class="icon"
+            style="bottom: 88%; right: 94%; z-index: 101"
+            onmouseleave="hover('fileExplorer', 'exit')"
+            onmouseenter="
+                hover(
+                    'fileExplorer',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'File Explorer',
+                    'Stats Menu & Settings',
+                    '',
+                )
+            "
+            draggable="false"
+            onclick="toggleVisibility('statPage')"
+        />
+        <img
+            src="assets/img/desktop/icons/taskManagerIcon.png"
+            id="taskManagerIcon"
+            style="bottom: 64%; right: 94%"
+            class="icon"
+            onmouseleave="hover('taskManagerIcon', 'exit')"
+            onmouseenter="
+                hover(
+                    'taskManagerIcon',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Task Manager',
+                    'View how much memory you have left until you fail!',
+                    '',
+                )
+            "
+            draggable="false"
+            onclick="toggleVisibility('taskManager')"
+        />
+        <img
+            src="assets/img/desktop/icons/shop.png"
+            id="shopButton"
+            style="bottom: 76%; right: 94%"
+            class="icon"
+            onmouseleave="hover('shopButton', 'exit')"
+            onmouseenter="
+                hover(
+                    'shopButton',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Microslop Store',
+                    'Buy upgrades!',
+                    '',
+                )
+            "
+            draggable="false"
+            onclick="toggleVisibility('shopSpan')"
+        />
+        <img
+            src="assets/img/desktop/icons/defenderIcon.png"
+            id="winDefenderButton"
+            style="bottom: 52%; right: 94%; visibility: hidden"
+            class="icon"
+            onmouseleave="hover('winDefenderButton', 'exit')"
+            onmouseenter="
+                hover(
+                    'winDefenderButton',
+                    'enter',
+                    'bottom',
+                    'right',
+                    0,
+                    10,
+                    'Windows Defender',
+                    'Scan and remove viruses!',
+                    '',
+                )
+            "
+            draggable="false"
+            onclick="toggleVisibility('winDefender')"
+        />
+        <img src="" id="virusElement" draggable="false" style="opacity: 1" />
+        <span id="taskManager">
+            <img
+                src="assets/img/desktop/windows/taskManager/taskManager.png"
+                id="taskManagerImage"
+                draggable="false"
+            />
+            <img
+                src="assets/img/desktop/windows/taskManager/memoryProgess.png"
+                id="memoryProgess"
+                draggable="false"
+            />
+            <span
+                class="closeButton"
+                onclick="toggleVisibility('taskManager')"
+            ></span>
+        </span>
+        <span id="miniTaskManager">
+            <img
+                src="assets/img/desktop/windows/taskManager/miniTaskManager.png"
+                id="miniTaskManagerImage"
+                draggable="false"
+            />
+            <img
+                src="assets/img/desktop/windows/taskManager/memoryProgess.png"
+                id="miniMemoryProgess"
+                draggable="false"
+            />
+            <span
+                class="closeButton"
+                onclick="toggleVisibility('miniTaskManager')"
+            ></span>
+        </span>
+        <span id="winDefender">
+            <img
+                src="assets/img/desktop/windows/windowsDefender.png"
+                id="defenderWindow"
+                draggable="false"
+            />
+            <h1
+                class="windowTitle"
+                style="height: 15%; font-size: 0.8vw; left: 9%"
+            >
+                Windows Defender
+            </h1>
+            <span
+                class="closeButton"
+                onclick="toggleVisibility('statPage')"
+            ></span>
+            <h1 id="timeScanning">00:00:00</h1>
+            <h1 id="objScanned">0</h1>
+        </span>
+        <span id="statPage">
+            <img
+                src="assets/img/desktop/windows/shop/shopWindow.png"
+                id="statWindow"
+                draggable="false"
+            />
+            <h1 class="windowTitle">Stat and Settings Menu</h1>
+            <span
+                class="closeButton"
+                onclick="toggleVisibility('statPage')"
+            ></span>
+            <span id="settingsHolder">
+                <img
+                    onclick="settings('downloadToggle')"
+                    class="settingsItem"
+                    id="downloadToggle"
+                    draggable="false"
+                    src="assets/img/desktop/windows/settings/downloads.png"
+                    onmouseleave="settingsHover('1', 'exit')"
+                    onmouseenter="
+                        settingsHover(
+                            '1',
+                            'enter',
+                            10,
+                            'Toggle Downloads',
+                            'Will create windows instead of downloading a file. These windows DO count towards the memory.',
+                        )
+                    "
+                />
+                <img
+                    onclick="settings('soundToggle')"
+                    class="settingsItem"
+                    id="soundToggle"
+                    draggable="false"
+                    src="assets/img/desktop/windows/settings/sound.png"
+                    onmouseleave="settingsHover('2', 'exit')"
+                    onmouseenter="
+                        settingsHover(
+                            '2',
+                            'enter',
+                            10,
+                            'Toggle Sounds',
+                            'Mutes the audio!',
+                        )
+                    "
+                />
+            </span>
+            <span id="statHolder">
+                <h1 id="statListTitle">Stats:</h1>
+                <ul id="statList" style="list-style-type: none">
+                    <li>
+                        <h1 id="stat1" class="statItem">
+                            Total Windows Closed: 0
+                        </h1>
+                    </li>
+                    <li>
+                        <h1 id="stat2" class="statItem">
+                            Total Windows Ever: 0
+                        </h1>
+                    </li>
+                    <li>
+                        <h1 id="stat3" class="statItem">Windows Open: 0</h1>
+                    </li>
+                    <li>
+                        <h1 id="stat4" class="statItem">
+                            Maxium Windows: 26 Windows
+                        </h1>
+                    </li>
+                    <li>
+                        <h1 id="stat5" class="statItem">
+                            Total Money Spent: $0
+                        </h1>
+                    </li>
+                    <li>
+                        <h1 id="stat6" class="statItem">
+                            Total Money Earned: $0
+                        </h1>
+                    </li>
+                    <li>
+                        <h1 id="stat7" class="statItem">Current Money: $0</h1>
+                    </li>
+                    <li>
+                        <h1 id="stat8" class="statItem">
+                            Store Upgrades Bought: 0
+                        </h1>
+                    </li>
+                    <li>
+                        <h1 id="stat9" class="statItem">Current Phase: 1</h1>
+                    </li>
+                    <li><h1 id="stat10" class="statItem">Phases: 1/5</h1></li>
+                </ul>
+            </span>
+        </span>
+        <span id="shopSpan">
+            <img
+                src="assets/img/desktop/windows/shop/shopWindow.png"
+                id="shopWindow"
+                draggable="false"
+            />
+            <h1 class="windowTitle">Microslop Store</h1>
+            <span
+                class="closeButton"
+                onclick="toggleVisibility('shopSpan')"
+            ></span>
+            <span id="shopHolder">
+                <!--1-->
+                <span
+                    id="shopItem1"
+                    class="shopItem"
+                    onclick="
+                        buyItem(
+                            'upgrade1Button',
+                            50,
+                            'moneyGainFromWindowsBase',
+                            2,
+                            false,
+                            0,
+                        )
+                    "
+                >
+                    <img
+                        src="assets/img/desktop/windows/shop/moreMoney.png"
+                        id="upgrade1"
+                        draggable="false"
+                        onmouseleave="shopHover('1', 'exit')"
+                        onmouseenter="
+                            shopHover(
+                                '1',
+                                'enter',
+                                6,
+                                'Upgrade 1',
+                                'Gain $2 more money from closing some windows!',
+                                'Cost: $50',
+                            )
+                        "
+                    />
+                    <img
+                        src="assets/img/desktop/windows/shop/upgradeButton.png"
+                        id="upgrade1Button"
+                        class="shopButton"
+                        draggable="false"
+                    />
+                    <span class="buttonHolder">
+                        <h1 id="upgrade1ButtonPrice" class="buttonPrice">
+                            $50
+                        </h1>
+                    </span>
+                </span>
+                <!--2-->
+                <span
+                    id="shopItem2"
+                    class="shopItem"
+                    onclick="
+                        buyItem(
+                            'upgrade2Button',
+                            100,
+                            'memoryIncrease',
+                            1,
+                            false,
+                            0,
+                        )
+                    "
+                >
+                    <img
+                        src="assets/img/desktop/windows/shop/moreRam1.png"
+                        id="upgrade2"
+                        draggable="false"
+                        onmouseleave="shopHover('2', 'exit')"
+                        onmouseenter="
+                            shopHover(
+                                '2',
+                                'enter',
+                                6,
+                                'Upgrade 2',
+                                'Increase your total memory!',
+                                'Cost: $100',
+                            )
+                        "
+                    />
+                    <img
+                        src="assets/img/desktop/windows/shop/upgradeButton.png"
+                        id="upgrade2Button"
+                        class="shopButton"
+                        draggable="false"
+                    />
+                    <span class="buttonHolder">
+                        <h1 id="upgrade2ButtonPrice" class="buttonPrice">
+                            $100
+                        </h1>
+                    </span>
+                </span>
+                <!--3-->
+                <span
+                    id="shopItem3"
+                    class="shopItem"
+                    onclick="
+                        buyItem(
+                            'upgrade3Button',
+                            200,
+                            'moneyGainFromMovingWindowsBase',
+                            10,
+                            false,
+                            0,
+                        )
+                    "
+                >
+                    <img
+                        src="assets/img/desktop/windows/shop/moreMoney.png"
+                        id="upgrade3"
+                        draggable="false"
+                        onmouseleave="shopHover('3', 'exit')"
+                        onmouseenter="
+                            shopHover(
+                                '3',
+                                'enter',
+                                6,
+                                'Upgrade 3',
+                                'Gain $10 more money from closing some windows!',
+                                'Cost: $200',
+                            )
+                        "
+                    />
+                    <img
+                        src="assets/img/desktop/windows/shop/upgradeButton.png"
+                        id="upgrade3Button"
+                        class="shopButton"
+                        draggable="false"
+                    />
+                    <span class="buttonHolder">
+                        <h1 class="buttonPrice">$200</h1>
+                    </span>
+                </span>
+                <!--4-->
+                <span
+                    id="shopItem4"
+                    class="shopItem"
+                    onclick="
+                        buyItem(
+                            'upgrade4Button',
+                            350,
+                            'miniTaskManager',
+                            0,
+                            false,
+                            0,
+                        )
+                    "
+                >
+                    <img
+                        src="assets/img/desktop/windows/shop/smallTaskManager.png"
+                        id="upgrade4"
+                        draggable="false"
+                        onmouseleave="shopHover('4', 'exit')"
+                        onmouseenter="
+                            shopHover(
+                                '4',
+                                'enter',
+                                6,
+                                'Upgrade 4',
+                                'Get a smaller task manager!',
+                                'Cost: $350',
+                            )
+                        "
+                    />
+                    <img
+                        src="assets/img/desktop/windows/shop/upgradeButton.png"
+                        id="upgrade4Button"
+                        draggable="false"
+                        class="shopButton"
+                    />
+                    <span class="buttonHolder">
+                        <h1 id="upgrade4ButtonPrice" class="buttonPrice">
+                            $350
+                        </h1>
+                    </span>
+                </span>
+                <!--5-->
+                <span
+                    id="shopItem5"
+                    class="shopItem"
+                    onclick="
+                        buyItem(
+                            'upgrade5Button',
+                            400,
+                            'desktopItemSuffleSpeed',
+                            -120,
+                            false,
+                            0,
+                        )
+                    "
+                >
+                    <img
+                        src="assets/img/desktop/windows/shop/speedWindows.png"
+                        id="upgrade5"
+                        draggable="false"
+                        onmouseleave="shopHover('5', 'exit')"
+                        onmouseenter="
+                            shopHover(
+                                '5',
+                                'enter',
+                                6,
+                                'Upgrade 5',
+                                'Speed up desktop item shuffle speed',
+                                'Cost: $400',
+                            )
+                        "
+                    />
+                    <img
+                        src="assets/img/desktop/windows/shop/upgradeButton.png"
+                        id="upgrade5Button"
+                        draggable="false"
+                        class="shopButton"
+                    />
+                    <span class="buttonHolder">
+                        <h1 class="buttonPrice">$400</h1>
+                    </span>
+                </span>
+                <!--6-->
+                <span
+                    id="shopItem6"
+                    class="shopItem"
+                    onclick="
+                        buyItem(
+                            'upgrade6Button',
+                            500,
+                            'memoryIncrease',
+                            4,
+                            false,
+                            0,
+                        )
+                    "
+                >
+                    <img
+                        src="assets/img/desktop/windows/shop/moreRam2.png"
+                        id="upgrade6"
+                        draggable="false"
+                        onmouseleave="shopHover('6', 'exit')"
+                        onmouseenter="
+                            shopHover(
+                                '6',
+                                'enter',
+                                6,
+                                'Upgrade 6',
+                                'Increase your total memory!',
+                                'Cost: $500',
+                            )
+                        "
+                    />
+                    <img
+                        src="assets/img/desktop/windows/shop/upgradeButton.png"
+                        id="upgrade6Button"
+                        class="shopButton"
+                        draggable="false"
+                    />
+                    <span class="buttonHolder">
+                        <h1 class="buttonPrice">$500</h1>
+                    </span>
+                </span>
+                <!--7-->
+                <span
+                    id="shopItem7"
+                    class="shopItem"
+                    onclick="
+                        buyItem(
+                            'upgrade7Button',
+                            1200,
+                            'moneyGainMultiplier',
+                            2,
+                            false,
+                            0,
+                        )
+                    "
+                >
+                    <img
+                        src="assets/img/desktop/windows/shop/x2money.png"
+                        id="upgrade7"
+                        draggable="false"
+                        onmouseleave="shopHover('7', 'exit')"
+                        onmouseenter="
+                            shopHover(
+                                '7',
+                                'enter',
+                                6,
+                                'Upgrade 7',
+                                'x2 money from all sorces!',
+                                'Cost: $1200',
+                            )
+                        "
+                    />
+                    <img
+                        src="assets/img/desktop/windows/shop/upgradeButton.png"
+                        id="upgrade7Button"
+                        class="shopButton"
+                        draggable="false"
+                    />
+                    <span class="buttonHolder">
+                        <h1 class="buttonPrice">$1200</h1>
+                    </span>
+                </span>
+                <!--8-->
+                <span
+                    id="shopItem8"
+                    class="shopItem"
+                    onclick="
+                        buyItem(
+                            'upgrade8Button',
+                            1500,
+                            'clearWindows',
+                            2,
+                            true,
+                            500,
+                        )
+                    "
+                >
+                    <img
+                        src="assets/img/desktop/windows/shop/clearWindows.png"
+                        id="upgrade8"
+                        draggable="false"
+                        onmouseleave="shopHover('8', 'exit')"
+                        onmouseenter="
+                            shopHover(
+                                '8',
+                                'enter',
+                                6,
+                                'Upgrade 8',
+                                'Clears all non-bomb windows! Increase in price by $500 each time bought.',
+                                'Cost: $1500',
+                            )
+                        "
+                    />
+                    <img
+                        src="assets/img/desktop/windows/shop/upgradeButton.png"
+                        id="upgrade8Button"
+                        class="shopButton"
+                        draggable="false"
+                    />
+                    <span class="buttonHolder">
+                        <h1 id="upgrade8ButtonPrice" class="buttonPrice">
+                            $1500
+                        </h1>
+                    </span>
+                </span>
+                <!--9-->
+                <span
+                    id="shopItem9"
+                    class="shopItem"
+                    onclick="buyItem('upgrade9Button', 1500, 'winDefender')"
+                    style="visibility: hidden"
+                >
+                    <img
+                        src="assets/img/desktop/windows/shop/finalUpgrade.png"
+                        id="upgrade9"
+                        draggable="false"
+                        onmouseleave="shopHover('9', 'exit')"
+                        onmouseenter="
+                            shopHover(
+                                '9',
+                                'enter',
+                                6,
+                                'Final Upgrade',
+                                'Unlock the Windows Defender!',
+                                'Cost: $1500',
+                            )
+                        "
+                    />
+                    <img
+                        src="assets/img/desktop/windows/shop/upgradeButton.png"
+                        id="upgrade9Button"
+                        class="shopButton"
+                        draggable="false"
+                    />
+                    <span class="buttonHolder">
+                        <h1 class="buttonPrice">$1500</h1>
+                    </span>
+                </span>
+            </span>
+        </span>
+        <script src="game.js"></script>
+    </body>
+</html>
