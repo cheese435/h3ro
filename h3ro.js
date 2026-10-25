@@ -48,7 +48,7 @@ function showPopup(type) {
 }
 
 const banner = document.getElementById("banner")
-const fadeIn = ["pins", "welcome", "hackatime"]
+const fadeIn = ["pins", "welcome", "hackatime", "share"]
 document.getElementById("profile").addEventListener("transitionend", (x) => {
   if (x.propertyName === "transform") {
     for (let i = 0; i < (fadeIn.length); i++) {
@@ -98,8 +98,11 @@ document.getElementById("exitHolder").addEventListener("click", () => {
 if (document.cookie) {
   if (document.cookie == "theme=light") {
     document.documentElement.setAttribute("data-theme", "light");
+    bgImg.src = "assets/img/light.webp"
+    lightIcon.style.maskImage = 'url("assets/img/darkIcon.webp")'
   }
 }
+
 
 //fetch hackatime data
 

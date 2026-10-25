@@ -1,7 +1,4 @@
-/*  * { outline: 3px solid red; }  */
-
 /* Made for Terra! (https://terra.hackclub.com/) */
-
 
 @font-face {
     font-family: mainFont;
@@ -29,7 +26,7 @@
     --bg: #2e3440;
     --outerColor: #3b4252;
     --innerColor: #434c5e;
-    --ligherInner: #4c566a;
+    --lighterInner: #4c566a;
     --txtColor: #d8dee9;
 }
 
@@ -37,7 +34,7 @@
     --bg: #e1e8f0;
     --outerColor: #bcc5d4;
     --innerColor: #c8d2e1;
-    --ligherInner: #d3dff2;
+    --lighterInner: #d3dff2;
     --txtColor: #3b4252;
 }
 
@@ -60,6 +57,9 @@ a {
 .yesUnderline {
     text-decoration: underline;
 }
+.yesUnderline:hover {
+    text-decoration: underline wavy;
+}
 
 hr {
     border-top: 8px solid var(--innerColor);
@@ -67,8 +67,8 @@ hr {
     color: rgba(0,0,0,0);
 }
 
-mini {
-    font-size: 2rem;
+.mini {
+    font-size: 0.6em;
 }
 
 .text {
@@ -78,7 +78,7 @@ mini {
 
 
 
-.link, #githubIcon, .arrow, .icon, .bottomIcon, #exitIcon {
+.link, .arrow, .icon, .bottomIcon, #exitIcon {
     background-color: var(--txtColor);
     aspect-ratio: 1/1;
     -webkit-mask-repeat: no-repeat;
@@ -96,13 +96,11 @@ mini {
 
 .link {
     width: 1rem;
-    -webkit-mask-image: url("assets/img/link.webp");
     mask-image: url("assets/img/link.webp");
 }
 
 .arrow {
     aspect-ratio: 8/1;
-    -webkit-mask-image: url("assets/img/arrow.webp");
     mask-image: url("assets/img/arrow.webp");
     image-rendering: pixelated;
     width: 10rem;
@@ -126,21 +124,28 @@ mini {
 }
 
 #githubIcon {
-    -webkit-mask-image: url("assets/img/github.webp");
     mask-image: url("assets/img/github.webp");
 }
 
+#mailIcon {
+    mask-image: url("assets/img/mail.webp");
+}
+
+#archivesIcon {
+    mask-image: url("assets/img/book.webp");
+}
+
 #programIcon {
-    -webkit-mask-image: url("assets/img/programs.webp");
     mask-image: url("assets/img/programs.webp");
 }
 
-#musicIcon {
-    -webkit-mask-image: url("assets/img/music.webp");
-    mask-image: url("assets/img/music.webp");
+#projectsIcon {
+    mask-image: url("assets/img/project.webp");
 }
 
-
+#welcomeDesc {
+    white-space: normal;
+}
 
 .welcomeLinkHolder, .archiveHolder {
     cursor: pointer;
@@ -195,7 +200,7 @@ mini {
     position: absolute;
     top: 0;
     grid-template-columns: 1fr;
-    grid-template-areas: "profile" "pins" "welcome" "hackatime";
+    grid-template-areas: "profile" "pins" "welcome" "hackatime" "share";
 }
 
 #container > * {
@@ -205,13 +210,21 @@ mini {
     padding-top: 10px;
 }
 
-#pins, #welcome, #hackatime {
+#pins, #welcome, #hackatime, #share {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.5s, transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-
+#qrCode {
+    display: block;
+    width: 100%;
+    max-width: 12rem;
+    height: auto;
+    margin: 1rem auto;
+    image-rendering: pixelated;
+    padding: 0.5rem;
+}
 
 #profile {
     grid-area: profile;
@@ -273,6 +286,16 @@ mini {
     grid-area: welcome;
 }
 
+#share {
+    grid-area: share;
+}
+#share textarea {
+    width: 100%;
+    font-family: monospace;
+    color: var(--txtColor);
+    background-color: var(--lighterInner);
+}
+
 #hackatime {
     grid-area: hackatime;
 }
@@ -314,7 +337,7 @@ mini {
 
 
 #banner.open {
-    height: clamp(3rem, 7rem, 7rem);
+    height: 7rem;
 }
 #banner {
     height: 0;
@@ -399,7 +422,7 @@ mini {
 }
 
 #lightSwitch, #hideBanner {
-    background-color: var(--ligherInner);
+    background-color: var(--lighterInner);
     width: 2.75rem;
     height: 2.75rem;
     flex-shrink: 0;
@@ -411,9 +434,8 @@ mini {
 }
 
 #downIcon {
-    -webkit-mask-image: url("assets/img/down.webp");
     mask-image: url("assets/img/down.webp");
-    transition: rotate 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     width: 100%;
 }
 
@@ -452,7 +474,6 @@ mini {
 
 #exitIcon {
     width: 100%;
-    -webkit-mask-image: url("assets/img/x.webp");
     mask-image: url("assets/img/x.webp");
 }
 
@@ -487,17 +508,28 @@ mini {
     overflow-y: scroll;
 }
 
+.pinBody {
+    font-size: 1rem;
+}
+
 .programTitle {
     font-family: customMonospace;
     color: var(--txtColor);
 }
+#androidBanner {
+    z-index: 600;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
 
 @media (min-width: 668px) {
   #container {
-    grid-template-columns: 1fr 1fr 1.5fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
-        "profile pins x welcome"
-        "hackatime hackatime y z";
+        "profile pins pins . welcome"
+        "hackatime hackatime . . share";
   }
   #hackatimeHolder {
       grid-template-columns: repeat(3, 1fr);
@@ -508,3 +540,33 @@ mini {
         display: none;
     }
 }
+
+#smallIconsHolder {
+    gap: 0.5rem;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 88px);
+}
+#smallIconsHolder img, #h3roIcon{
+    width: 88px;
+    height: 31px;
+    display: block;
+    image-rendering: pixelated;
+}
+
+#tank {
+    font-family: monospace;
+}
+
+#zed {mask-image: url("assets/img/programs/zed.webp");}
+#aseprite {mask-image: url("assets/img/programs/aseprite.webp");}
+#photopea {mask-image: url("assets/img/programs/photopea.webp");}
+#linux {mask-image: url("assets/img/programs/linux.webp");}
+#convertToIt {mask-image: url("assets/img/programs/convertToIt.webp");}
+#ezGif {mask-image: url("assets/img/programs/ezGif.webp");}
+#tauon {mask-image: url("assets/img/programs/tauon.webp");}
+#librewolf {mask-image: url("assets/img/programs/librewolf.webp");}
+#prismlauncher {mask-image: url("assets/img/programs/prismlauncher.webp");}
+#vencord {mask-image: url("assets/img/programs/vencord.webp");}
+#navidrome {mask-image: url("assets/img/programs/navidrome.webp");}
+#nginx {mask-image: url("assets/img/programs/nginx.webp");}
