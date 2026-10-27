@@ -16,7 +16,7 @@ Best viewed at [h3ro.dev](https://h3ro.dev/)
 
 Something wrong with h3ro.dev? try [this version](https://cheese435.github.io/h3ro/h3ro.html) (contains no hackatime data)
 
-Website Preview:
+#### Website Preview:
 
 <img width="1239" height="428" src="https://github.com/user-attachments/assets/35d8ef17-48f6-4dd8-8623-b7f5c2b5290e" />
 <img width="1679" height="919" src="https://github.com/user-attachments/assets/6e5c6014-8cce-458c-9c4e-cb47fa0a3802" />
