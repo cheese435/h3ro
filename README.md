@@ -4,6 +4,7 @@ My website is self-hosted using `nginx` and a raspberry pi 4b!
 
 The website was not only made to further improve my `css` and `html` skills, but also as a way to host blog posts, web projects and archives for other websites! The website runs on `html, css and a small amount of js`, and has been tested on many different screen sizes (including phones!) and should work with little to no issues. 
 
+
 #### What's inside?
 - Choice between light mode and dark mode
 - Simple, expandable design for future updates
@@ -11,11 +12,17 @@ The website was not only made to further improve my `css` and `html` skills, but
 - Hand drawn assets
 - Popup lists
 
+
 ### How to run
 ##### The project can be viewed in one of two simple ways:
 Best viewed at [h3ro.dev](https://h3ro.dev/)
-
 Something wrong with h3ro.dev? try [this version](https://cheese435.github.io/h3ro/h3ro.html) (contains no hackatime data)
+#### Or, if you want to self-host it:
+Download the github repo as a zip and extract it
+Navigate to the extracted holder and double click `h3ro.html` to open it in your browser
+You could also go to `file:///usernameHere/folderYouExtratedInto/extratedFolder/h3ro.html`
+##### Self-hosting will _not_ show the masked black/white images. This is a browser limitation. To get around it, use a `localhost` server.
+
 
 #### Website Preview:
 
