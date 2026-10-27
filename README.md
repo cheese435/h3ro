@@ -11,7 +11,8 @@ The website was not only made to further improve my `css` and `html` skills, but
 - Hand drawn assets
 - Popup lists
 
-### The project can be viewed in one of two simple ways:
+### How to run
+##### The project can be viewed in one of two simple ways:
 Best viewed at [h3ro.dev](https://h3ro.dev/)
 
 Something wrong with h3ro.dev? try [this version](https://cheese435.github.io/h3ro/h3ro.html) (contains no hackatime data)
